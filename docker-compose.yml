@@ -1,14 +1,9 @@
-version: '2'
+version: '3.3'
 services:
   proxy_pool:
-    build: .
+    image: jhao104/proxy_pool:latest
     container_name: proxy_pool
     ports:
       - "5010:5010"
-    links:
-      - proxy_redis
     environment:
-      DB_CONN: "redis://@proxy_redis:6379/0"
-  proxy_redis:
-    image: "redis"
-    container_name: proxy_redis
+      DB_CONN: "redis://192.168.1.3:6377/0"
